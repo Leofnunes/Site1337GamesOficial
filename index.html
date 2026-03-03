@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espada do Abismo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=MedievalSharp&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-rpg-dark text-stone-200">
+    <header class="header">
+        <div class="header-container">
+            <button class="logo-btn" onclick="navigateTo('home')">
+                <img src="images/1337Games.png" alt="Logo" class="header-logo">
+            </button>
+
+            <nav class="desktop-nav">
+                <button class="nav-link active" data-page-id="home" onclick="navigateTo('home')">Início</button>
+                <button class="nav-link" data-page-id="story" onclick="navigateTo('story')">História</button>
+                <button class="nav-link" data-page-id="characters" onclick="navigateTo('characters')">Personagens</button>
+                <button class="nav-link" data-page-id="screenshots" onclick="navigateTo('screenshots')">Galeria</button>
+                <button class="nav-link" data-page-id="download" onclick="navigateTo('download')">Download</button>
+                <button class="nav-link" data-page-id="donate" onclick="navigateTo('donate')">Doar</button>
+                <button class="nav-link" data-page-id="contact" onclick="navigateTo('contact')">Contato</button>
+            </nav>
+
+            <button class="mobile-toggle" onclick="toggleMobileMenu()">
+                <i data-lucide="menu" id="menu-icon"></i>
+            </button>
+        </div>
+
+        <div class="mobile-nav" id="mobile-nav">
+            <button class="mobile-nav-link" onclick="navigateTo('home')">Início</button>
+            <button class="mobile-nav-link" onclick="navigateTo('story')">História</button>
+            <button class="mobile-nav-link" onclick="navigateTo('characters')">Personagens</button>
+            <button class="mobile-nav-link" onclick="navigateTo('screenshots')">Galeria</button>
+            <button class="mobile-nav-link" onclick="navigateTo('download')">Download</button>
+            <button class="mobile-nav-link" onclick="navigateTo('donate')">Doar</button>
+            <button class="mobile-nav-link" onclick="navigateTo('contact')">Contato</button>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- HOME PAGE -->
+        <section id="page-home" class="page active">
+            <div class="hero">
+                <div class="hero-bg">
+                    <img src="https://images.unsplash.com/photo-1519074063912-ad2d605a5c17?q=80&w=2070&auto=format&fit=crop" alt="Background" class="hero-img">
+                    <div class="hero-overlay-v"></div>
+                    <div class="hero-overlay-h"></div>
+                </div>
+                <div class="hero-content">
+                    <div class="hero-logo-container">
+                        <!-- Logo Espada do Abismo -->
+                        <img src="images/EspadaAbismoLogo.png" alt="Espada do Abismo Logo" class="hero-logo">
+                    </div>
+                    <p class="hero-description">
+                        "Nas profundezas onde a luz não ousa tocar, apenas o aço forjado no vazio abrirá caminho."
+                    </p>
+                    <button class="rpg-button" onclick="navigateTo('download')">
+                        <i data-lucide="download"></i>
+                        Jogar Agora
+                    </button>
+                </div>
+                <div class="scroll-indicator">
+                    <div class="scroll-line"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STORY PAGE -->
+        <section id="page-story" class="page">
+            <div class="container py-32">
+                <div class="section-header">
+                    <h2 class="section-title">A Lenda de Thaelvyr</h2>
+                    <div class="section-divider"></div>
+                    <p class="section-subtitle">Uma crônica de luz perdida e sombras persistentes.</p>
+                </div>
+
+                <div class="story-grid">
+                    <div class="story-item">
+                        <div class="story-text">
+                    <h3>O Nome que Fundou um Reino</h3>
+                    <p>Antes de muralhas, antes de tronos, existiu apenas um homem: Thaelvyr. Guerreiro, estrategista e portador de uma lâmina cuja origem jamais foi revelada. Foi ele quem unificou clãs dispersos sob um único estandarte, erguendo um reino que futuramente carregaria seu nome.</p>
+                    <p>Thaelvyr não construiu apenas cidades, ele construiu ordem em meio ao caos. Durante gerações, seu legado sustentou uma era de expansão, conhecimento e poder arcano rigidamente controlado.</p>
+                    <p>Empunhando a Espada do Abismo, ele confrontou a ruptura que ameaçava consumir o mundo. Thaelvyr utilizou o poder da própria espada para selar o Abismo nas profundezas da terra. O feito custou custou sua própria existência. Em sua honra, o reino recebeu seu nome.</p>
+                    <blockquote class="story-quote">"Enquanto teu nome permanecer, o reino dos humanos resistirá." -Wirenth Venyra, Arquimago Élfico.</blockquote>
+                </div>
+                        <div class="story-image-wrapper">
+                            <img src="images/Espadadoabismo.png" alt="Story 1" class="story-image">
+                        </div>
+                    </div>
+
+                    <div class="story-item reverse">
+                        <div class="story-text">
+                            <h3>A Reabertura do Abismo</h3>
+                            <p>Por séculos, o selo permaneceu intacto. O Abismo foi reduzido a mito, tratado como exagero histórico ou superstição religiosa. Mas como qualquer outro selo mágico, seja humano ou élfico, uma hora acaba se partindo. </p>
+                            <p>Aquilo que uma hora foi aprisionado jamais deixou de existir. Após gerações de silêncio, pequenas fissuras começaram a ressurgir sob o território de Thaelvyr.</p>
+                            <p>Mas dessa vez, não existe outro Thaelvyr para se sacrificar...</p>
+                            <blockquote class="story-quote">"Aquilo que foi selado pela lâmina, retorna quando a lâmina se enfraquece ou não está mais presente."</blockquote>
+                        </div>
+                        <div class="story-image-wrapper">
+                            <img src="images/Abismo.png" alt="Story 2" class="story-image">
+                        </div>
+                    </div>
+
+                    <div class="story-item">
+                        <div class="story-text">
+                            <h3>Sua Jornada Começa Agora</h3>
+                            <p>Você assume o papel de Aldric, irmão mais novo de Kael o lendário Espadachim Mágico cujo nome ecoa por todo Thaelvyr. À sombra dessa reputação, Aldric parte pelo reino não para seguir os passos do irmão, mas para trilhar o próprio caminho, reunindo aliados que ainda acreditam que o futuro de Thaelvyr pode ser reescrito.</p>
+                            <p>Sua jornada o levará através de ruínas esquecidas e campos de batalha desolados, onde cada escolha pode ser a diferença entre a salvação ou a queda final.</p>
+                            <blockquote class="story-quote">"Quando a última chama se apagar, a espada e o poder arcano serão os seus únicos guias."</blockquote>
+                        </div>
+                        <div class="story-image-wrapper">
+                            <img src="images/Forest.png" alt="Story 3" class="story-image">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cta-panel">
+                    <h3>Sua jornada começa agora</h3>
+                    <p>O destino do mundo está novamente em risco. Você enfrentará aquilo que nem mesmo Thaelvyr conseguiu destruir?</p>
+                    <button class="rpg-button" onclick="navigateTo('download')">Explorar o Mundo</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHARACTERS PAGE -->
+        <section id="page-characters" class="page">
+            <div class="container py-32">
+                <div class="section-header">
+                    <h2 class="section-title">Personagens</h2>
+                    <p class="section-subtitle">Conheça aqueles que moldarão o destino de Thaelvyr.</p>
+                </div>
+
+                <div class="characters-grid">
+                    <div class="char-card">
+                        <img src="images/Aldric_Mugshot.png" alt="Aldric" class="char-img">
+                        <div class="char-info">
+                            <span class="char-role">O Guerreiro</span>
+                            <h3 class="char-name">Aldric</h3>
+                            <p class="char-desc">Guerreiro e irmão mais novo de Kael, o lendário espadachim mágico. Especializado em combate corpo a corpo e no uso de diferentes armas. Está treinando para se tornar membro da guarda real de Thaelvyr.</p>
+                        </div>
+                    </div>
+                    <div class="char-card">
+                        <img src="images/Sherry_Mugshot.png" alt="Sherry" class="char-img">
+                        <div class="char-info">
+                            <span class="char-role">A Arcanista</span>
+                            <h3 class="char-name">Sherry</h3>
+                            <p class="char-desc">Uma arcanista humana com proficiência em magias negras e brancas. Conhecida e invejada pela sua habilidade mágica precoce, trabalha treinando jovens magos na academia mágica de Thaelvyr.</p>
+                        </div>
+                    </div>
+                    <div class="char-card">
+                        <img src="images/Tessa_Mugshot.png" alt="Tessa" class="char-img">
+                        <div class="char-info">
+                            <span class="char-role">Tessa</span>
+                            <h3 class="char-name">Acólita de Batalha</h3>
+                            <p class="char-desc">Acólita de Batalha que foi treinada pelo reino de Thaelvyr. Embora conhecida por seus poderes mágicos e magia branca, Tessa foi treinada como acólita de batalha, se especializando no uso de diferentes armas.</p>
+                        </div>
+                    </div>
+                    <div class="char-card">
+                        <img src="images/Kael_Mugshot.png" alt="Kael" class="char-img">
+                        <div class="char-info">
+                            <span class="char-role">Kael</span>
+                            <h3 class="char-name">Espadachim Mágico</h3>
+                            <p class="char-desc">Famoso espadachim mágico. Irmão mais velho de Aldric. Possui a habilidade de infundir qualquer objeto que segura com elementos mágicos. Kael trabalha sobre as ordens diretas do rei.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GALLERY PAGE -->
+        <section id="page-screenshots" class="page">
+            <div class="container py-32">
+                <div class="section-header">
+                    <h2 class="section-title">Galeria</h2>
+                    <p class="section-subtitle">Vislumbres do mundo de Espada do Abismo.</p>
+                </div>
+
+                <div class="gallery-grid">
+                    <div class="gallery-item" onclick="openLightbox('images/Abismo.png')">
+                        <img src="images/Abismo.png" alt="Abismo">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('images/Mines.png')">
+                        <img src="images/Mines.png" alt="Screenshot 2">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('images/Ruins')">
+                        <img src="images/Ruins.png" alt="Screenshot 3">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('images/Forest.png')">
+                        <img src="images/Forest.png" alt="Screenshot 4">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('images/Crypt0.png')">
+                        <img src="images/Crypt0.png" alt="Screenshot 5">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('images/espadadoabismo2.png')">
+                        <img src="images/espadadoabismo2.png" alt="Screenshot 6">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('images/espadadoabismo3.png')">
+                        <img src="images/espadadoabismo3.png" alt="Screenshot 7">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('images/Map007.png')">
+                        <img src="images/Map007.png" alt="Screenshot 8">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DOWNLOAD PAGE -->
+        <section id="page-download" class="page">
+            <div class="container py-32">
+                <div class="section-header">
+                    <h2 class="section-title">Baixar o Jogo</h2>
+                    <p class="section-subtitle">Escolha sua plataforma e começa sua jornada em Espada do Abismo. Versão atual: v0.2 (Beta).</p>
+                </div>
+
+                <div class="download-grid">
+                    <div class="download-options">
+                        <h3 class="sub-title">Plataformas</h3>
+                        <div class="platform-list">
+                            <button class="platform-btn windows">
+                                <i data-lucide="monitor"></i>
+                                <span>Download Windows</span>
+                                <i data-lucide="download" class="dl-icon"></i>
+                            </button>
+                            <button class="platform-btn linux">
+                                <i data-lucide="terminal"></i>
+                                <span>Download Linux</span>
+                                <i data-lucide="download" class="dl-icon"></i>
+                            </button>
+                            <button class="platform-btn macos">
+                                <i data-lucide="apple"></i>
+                                <span>Download MacOS</span>
+                                <i data-lucide="download" class="dl-icon"></i>
+                            </button>
+                            <button class="platform-btn android">
+                                <i data-lucide="smartphone"></i>
+                                <span>Download Android (APK)</span>
+                                <i data-lucide="download" class="dl-icon"></i>
+                            </button>
+                            <button class="platform-btn web">
+                                <i data-lucide="globe"></i>
+                                <span>Jogar pelo Navegador</span>
+                                <i data-lucide="globe" class="dl-icon"></i>
+                            </button>
+                        </div>
+                        <div class="info-box">
+                            <p>* A versão Android requer permissão para instalar de fontes desconhecidas.</p>
+                        </div>
+                    </div>
+
+                    <div class="requirements">
+                        <h3 class="sub-title">Requisitos do Sistema</h3>
+                        <div class="req-list">
+                            <div class="req-card">
+                                <h4><i data-lucide="monitor"></i> Windows</h4>
+                                <ul>
+                                    <li><span>OS:</span> Windows 7/8/8.1/10 (64bit)</li>
+                                    <li><span>CPU:</span> Pentium e5700</li>
+                                    <li><span>RAM:</span> 250MB (Leve) / 600MB (Full)</li>
+                                    <li><span>GPU:</span> DX9/OpenGL 4.1 GPU</li>
+                                    <li><span>STORAGE:</span> 450MB Livres</li>
+                                </ul>
+                            </div>
+                            <div class="req-card">
+                                <h4><i data-lucide="terminal"></i> Linux</h4>
+                                <ul>
+                                    <li><span>OS:</span> Linux 64 bit</li>
+                                    <li><span>CPU:</span> Pentium e5700</li>
+                                    <li><span>RAM:</span> 250MB</li>
+                                    <li><span>GPU:</span> DX9/OpenGL 4.1 GPU</li>
+                                    <li><span>STORAGE:</span> 450MB Livres</li>
+                                </ul>
+                            </div>
+                            <div class="req-row">
+                                <div class="req-card">
+                                    <h4><i data-lucide="smartphone"></i> Android</h4>
+                                    <p>Requisito mínimo: Android 5.0+</p>
+                                </div>
+                                <div class="req-card">
+                                    <h4><i data-lucide="apple"></i> MacOS</h4>
+                                    <p>Qualquer versão após 2016.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DONATE PAGE -->
+        <section id="page-donate" class="page">
+            <div class="container py-32 donate-container">
+                <div class="donate-info">
+                    <h2 class="section-title text-left">Apoie o Desenvolvedor</h2>
+                    <p class="section-subtitle text-left">Espada do Abismo é um projeto de paixão desenvolvido por uma única pessoa. Seu apoio ajuda a manter o desenvolvimento, publicação do jogo e garantir que a jornada continue.</p>
+                    
+                    <div class="benefit-list">
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i data-lucide="shield-check"></i></div>
+                            <div class="benefit-text">
+                                <h4>Transparência</h4>
+                                <p>Todo valor arrecadado é reinvestido no jogo.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i data-lucide="heart"></i></div>
+                            <div class="benefit-text">
+                                <h4>Agradecimento</h4>
+                                <p>Ficarei grato por ter ajudado com o projeto :D</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="donate-card">
+                    <button class="donate-btn coffee">
+                        <div class="donate-btn-content">
+                            <div>
+                                <div class="btn-title">Via Pix</div>
+                                <div class="btn-sub">Doe qualquer valor</div>
+                                
+                            </div>
+                        </div>
+                        <span class="arrow">→</span>
+                    </button>
+
+                    <button class="donate-btn patreon">
+                        <div class="donate-btn-content">
+                            <div>
+                                <div class="btn-title">Patreon</div>
+                                <div class="btn-sub">Apoio mensal recorrente</div>
+                            </div>
+                        </div>
+                        <span class="arrow">→</span>
+                    </button>
+
+                    <div class="pix-section">
+                        <p class="pix-label">QR Code Pix</p>
+                        <div class="qr-code">
+                            <img src="images/qrcode.png" alt="QR Code PIX">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT PAGE -->
+        <section id="page-contact" class="page">
+            <div class="container py-32">
+                <div class="section-header">
+                    <h2 class="section-title">Contato</h2>
+                    <p class="section-subtitle">Entre em contato com a equipe da 1337Games.</p>
+                </div>
+
+                <div class="contact-panel">
+                    <div class="contact-grid">
+                        <a href="mailto:1337gamescompany@gmail.com" class="contact-item">
+                            <div class="contact-icon"><i data-lucide="mail"></i></div>
+                            <div class="contact-details">
+                                <span class="label">Email</span>
+                                <span class="value">1337gamescompany@gmail.com</span>
+                            </div>
+                        </a>
+                        <a href="https://linkedin.com/in/leofnunes/" target="_blank" class="contact-item">
+                            <div class="contact-icon"><i data-lucide="linkedin"></i></div>
+                            <div class="contact-details">
+                                <span class="label">LinkedIn</span>
+                                <span class="value">leofnunes</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="community-section">
+                        <p>Faça parte da nossa comunidade e acompanhe o desenvolvimento de perto.</p>
+                        <a href="https://chat.whatsapp.com/KLUrdCA2lY1Eh7nFFftYsC" target="_blank" class="rpg-button">
+                            <i data-lucide="message-circle"></i>
+                            Entrar no Grupo do WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-footer">
+                    <p>© 2026 1337Games</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="https://youtube.com/@theguitargamer1" target="_blank" class="social-link">
+                    <i data-lucide="youtube"></i>
+                    <span>YouTube</span>
+                </a>
+                <a href="https://linkedin.com/in/leofnunes/" target="_blank" class="social-link">
+                    <i data-lucide="linkedin"></i>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://chat.whatsapp.com/KLUrdCA2lY1Eh7nFFftYsC" target="_blank" class="social-link">
+                    <i data-lucide="message-circle"></i>
+                    <span>WhatsApp</span>
+                </a>
+            </div>
+            <p class="copyright">© 2026 ESPADA DO ABISMO. DESENVOLVIDO PELA 1337GAMES.</p>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <button class="close-btn" onclick="closeLightbox()"><i data-lucide="x"></i></button>
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <img id="lightbox-img" src="" alt="Lightbox Image">
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
