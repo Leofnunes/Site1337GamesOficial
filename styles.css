@@ -1,3 +1,68 @@
+/* FONTS */
+@font-face {
+    font-family: 'Inter';
+    src: url('fonts/inter-400.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Inter';
+    src: url('fonts/inter-500.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Inter';
+    src: url('fonts/inter-600.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'MedievalSharp';
+    src: url('fonts/medievalsharp-400.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('fonts/playfair-display-400.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('fonts/playfair-display-700.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('fonts/playfair-display-italic-400.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('fonts/jetbrains-mono-400.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('fonts/jetbrains-mono-500.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     --abyss-bg: #04061a;
     --abyss-bg-grad: linear-gradient(180deg, #04061a 0%, #0a0e2a 100%);
@@ -27,12 +92,20 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: var(--rpg-dark);
-    background-image: var(--abyss-bg-grad);
-    background-attachment: fixed;
     color: var(--stone-200);
     line-height: 1.6;
     overflow-x: hidden;
+    background-color: var(--rpg-dark);
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+    background-image: var(--abyss-bg-grad);
+    background-size: cover;
+    pointer-events: none;
 }
 
 h1, h2, h3, h4, .font-display {
@@ -120,7 +193,7 @@ h1, h2, h3, h4, .font-display {
     cursor: pointer;
     padding: 8px 0;
     position: relative;
-    transition: all 0.3s ease;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .nav-link:hover {
@@ -190,28 +263,31 @@ h1, h2, h3, h4, .font-display {
 .page {
     display: none;
     min-height: 100vh;
+    content-visibility: auto;
+    contain-intrinsic-size: 100vh;
 }
 
 .page.active {
     display: block;
     animation: fadeIn 0.5s ease forwards;
+    will-change: opacity, transform;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(10px) translateZ(0); }
+    to { opacity: 1; transform: translateY(0) translateZ(0); }
 }
 
 /* HERO */
 .hero {
     position: relative;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 0 24px;
+    padding: 100px 24px 60px;
 }
 
 .hero-bg {
@@ -243,6 +319,11 @@ h1, h2, h3, h4, .font-display {
 
 .hero-content {
     max-width: 800px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero-subtitle {
@@ -251,39 +332,46 @@ h1, h2, h3, h4, .font-display {
     text-transform: uppercase;
     letter-spacing: 0.3em;
     font-size: 16px;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
     display: block;
 }
 
 .hero-logo-container {
-    margin-bottom: 32px;
+    margin-bottom: 40px;
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 .hero-logo {
-    width: 80%;
-    max-width: 400px;
+    width: 100%;
+    max-width: 320px;
     object-fit: contain;
     height: auto;
     filter: drop-shadow(0 0 30px rgba(200, 168, 75, 0.5));
 }
 
 @media (min-width: 768px) {
+    .hero-logo { max-width: 500px; }
+    .hero { padding: 120px 24px 80px; }
+}
+
+@media (min-width: 1024px) {
     .hero-logo { max-width: 600px; }
 }
 
 .hero-description {
-    max-width: 600px;
+    max-width: 650px;
     margin: 0 auto 48px;
     color: var(--stone-400);
     font-family: 'MedievalSharp', cursive;
-    font-size: 20px;
+    font-size: 18px;
     text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    line-height: 1.5;
 }
 
 @media (min-width: 768px) {
-    .hero-description { font-size: 20px; }
+    .hero-description { font-size: 22px; }
 }
 
 .rpg-button {
@@ -300,7 +388,7 @@ h1, h2, h3, h4, .font-display {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    transition: all 0.3s ease;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0,0,0,0.3);
@@ -419,7 +507,7 @@ h1, h2, h3, h4, .font-display {
     overflow: hidden;
     border: 2px solid var(--abyss-border);
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-    transition: all 0.5s ease;
+    transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, color 0.3s ease;
 }
 
 .story-image-wrapper:hover {
@@ -432,7 +520,7 @@ h1, h2, h3, h4, .font-display {
     height: 100%;
     object-fit: cover;
     filter: grayscale(80%) brightness(0.8);
-    transition: all 1s ease;
+    transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, color 0.3s ease;
 }
 
 .story-image-wrapper:hover .story-image {
@@ -483,7 +571,7 @@ h1, h2, h3, h4, .font-display {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: all 0.3s ease;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .char-card:hover {
@@ -498,7 +586,7 @@ h1, h2, h3, h4, .font-display {
     aspect-ratio: 1/1;
     object-fit: cover;
     filter: grayscale(100%) brightness(0.7);
-    transition: all 0.7s ease;
+    transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, color 0.3s ease;
 }
 
 .char-card:hover .char-img {
@@ -552,7 +640,7 @@ h1, h2, h3, h4, .font-display {
     border-radius: 12px;
     border: 1.5px solid var(--abyss-border);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .gallery-item img {
@@ -608,7 +696,7 @@ h1, h2, h3, h4, .font-display {
     cursor: pointer;
     color: var(--stone-200);
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .platform-btn i:first-child {
@@ -756,7 +844,7 @@ h1, h2, h3, h4, .font-display {
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
     font-family: 'MedievalSharp', cursive;
 }
 
@@ -831,8 +919,8 @@ h1, h2, h3, h4, .font-display {
     margin-bottom: 48px;
 }
 
-@media (min-width: 640px) {
-    .contact-grid { grid-template-columns: 1fr 1fr; }
+@media (min-width: 768px) {
+    .contact-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 .contact-item {
@@ -858,8 +946,14 @@ h1, h2, h3, h4, .font-display {
     align-items: center;
     justify-content: center;
     color: var(--abyss-accent);
-    transition: all 0.3s ease;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
     box-shadow: 0 0 10px rgba(200, 168, 75, 0.2);
+}
+
+.contact-icon svg {
+    width: 28px;
+    height: 28px;
+    display: block;
 }
 
 .contact-item:hover .contact-icon {
@@ -929,7 +1023,12 @@ h1, h2, h3, h4, .font-display {
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 0.2em;
-    transition: all 0.3s ease;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.social-link svg {
+    width: 18px;
+    height: 18px;
 }
 
 .social-link:hover {

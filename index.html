@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Espada do Abismo</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=MedievalSharp&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="fonts/inter-400.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="images/EspadaAbismoLogo.png" as="image">
     <link rel="stylesheet" href="styles.css">
     <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lucide@0.408.0"></script>
 </head>
 <body class="bg-rpg-dark text-stone-200">
     <header class="header">
@@ -91,20 +91,20 @@
                     <blockquote class="story-quote">"Enquanto teu nome permanecer, o reino dos humanos resistirá." -Wirenth Venyra, Arquimago Élfico.</blockquote>
                 </div>
                         <div class="story-image-wrapper">
-                            <img src="images/Espadadoabismo.png" alt="Story 1" class="story-image">
+                            <img src="images/Espadadoabismo.png" alt="Story 1" class="story-image" loading="lazy" decoding="async">
                         </div>
                     </div>
 
                     <div class="story-item reverse">
                         <div class="story-text">
                             <h3>A Reabertura do Abismo</h3>
-                            <p>Por séculos, o selo permaneceu intacto. O Abismo foi reduzido a mito, tratado como exagero histórico ou superstição religiosa. Mas como qualquer outro selo mágico, seja humano ou élfico, uma hora acaba se partindo. </p>
+                            <p>Por séculos, the selo permaneceu intacto. O Abismo foi reduzido a mito, tratado como exagero histórico ou superstição religiosa. Mas como qualquer outro selo mágico, seja humano ou élfico, uma hora acaba se partindo. </p>
                             <p>Aquilo que uma hora foi aprisionado jamais deixou de existir. Após gerações de silêncio, pequenas fissuras começaram a ressurgir sob o território de Thaelvyr.</p>
                             <p>Mas dessa vez, não existe outro Thaelvyr para se sacrificar...</p>
                             <blockquote class="story-quote">"Aquilo que foi selado pela lâmina, retorna quando a lâmina se enfraquece ou não está mais presente."</blockquote>
                         </div>
                         <div class="story-image-wrapper">
-                            <img src="images/Abismo.png" alt="Story 2" class="story-image">
+                            <img src="images/Abismo.png" alt="Story 2" class="story-image" loading="lazy" decoding="async">
                         </div>
                     </div>
 
@@ -116,7 +116,7 @@
                             <blockquote class="story-quote">"Quando a última chama se apagar, a espada e o poder arcano serão os seus únicos guias."</blockquote>
                         </div>
                         <div class="story-image-wrapper">
-                            <img src="images/Forest.png" alt="Story 3" class="story-image">
+                            <img src="images/Forest.png" alt="Story 3" class="story-image" loading="lazy" decoding="async">
                         </div>
                     </div>
                 </div>
@@ -139,7 +139,7 @@
 
                 <div class="characters-grid">
                     <div class="char-card">
-                        <img src="images/Aldric_Mugshot.png" alt="Aldric" class="char-img">
+                        <img src="images/Aldric_Mugshot.png" alt="Aldric" class="char-img" loading="lazy" decoding="async">
                         <div class="char-info">
                             <span class="char-role">O Guerreiro</span>
                             <h3 class="char-name">Aldric</h3>
@@ -147,7 +147,7 @@
                         </div>
                     </div>
                     <div class="char-card">
-                        <img src="images/Sherry_Mugshot.png" alt="Sherry" class="char-img">
+                        <img src="images/Sherry_Mugshot.png" alt="Sherry" class="char-img" loading="lazy" decoding="async">
                         <div class="char-info">
                             <span class="char-role">A Arcanista</span>
                             <h3 class="char-name">Sherry</h3>
@@ -155,7 +155,7 @@
                         </div>
                     </div>
                     <div class="char-card">
-                        <img src="images/Tessa_Mugshot.png" alt="Tessa" class="char-img">
+                        <img src="images/Tessa_Mugshot.png" alt="Tessa" class="char-img" loading="lazy" decoding="async">
                         <div class="char-info">
                             <span class="char-role">A Acólita de Batalha</span>
                             <h3 class="char-name">Tessa</h3>
@@ -163,7 +163,7 @@
                         </div>
                     </div>
                     <div class="char-card">
-                        <img src="images/Kael_Mugshot.png" alt="Kael" class="char-img">
+                        <img src="images/Kael_Mugshot.png" alt="Kael" class="char-img" loading="lazy" decoding="async">
                         <div class="char-info">
                             <span class="char-role">O Espadachim Mágico</span>
                             <h3 class="char-name">Kael</h3>
@@ -184,28 +184,28 @@
 
                 <div class="gallery-grid">
                     <div class="gallery-item" onclick="openLightbox('images/Abismo.png')">
-                        <img src="images/Abismo.png" alt="Abismo">
+                        <img src="images/Abismo.png" alt="Abismo" loading="lazy" decoding="async">
                     </div>
                     <div class="gallery-item" onclick="openLightbox('images/Mines.png')">
-                        <img src="images/Mines.png" alt="Screenshot 2">
+                        <img src="images/Mines.png" alt="Screenshot 2" loading="lazy" decoding="async">
                     </div>
                     <div class="gallery-item" onclick="openLightbox('images/Ruins.png')">
-                        <img src="images/Ruins.png" alt="Screenshot 3">
+                        <img src="images/Ruins.png" alt="Screenshot 3" loading="lazy" decoding="async">
                     </div>
                     <div class="gallery-item" onclick="openLightbox('images/Forest.png')">
-                        <img src="images/Forest.png" alt="Screenshot 4">
+                        <img src="images/Forest.png" alt="Screenshot 4" loading="lazy" decoding="async">
                     </div>
                     <div class="gallery-item" onclick="openLightbox('images/Crypt0.png')">
-                        <img src="images/Crypt0.png" alt="Screenshot 5">
+                        <img src="images/Crypt0.png" alt="Screenshot 5" loading="lazy" decoding="async">
                     </div>
                     <div class="gallery-item" onclick="openLightbox('images/espadadoabismo2.png')">
-                        <img src="images/espadadoabismo2.png" alt="Screenshot 6">
+                        <img src="images/espadadoabismo2.png" alt="Screenshot 6" loading="lazy" decoding="async">
                     </div>
                     <div class="gallery-item" onclick="openLightbox('images/espadadoabismo3.png')">
-                        <img src="images/espadadoabismo3.png" alt="Screenshot 7">
+                        <img src="images/espadadoabismo3.png" alt="Screenshot 7" loading="lazy" decoding="async">
                     </div>
                     <div class="gallery-item" onclick="openLightbox('images/Map007.png')">
-                        <img src="images/Map007.png" alt="Screenshot 8">
+                        <img src="images/Map007.png" alt="Screenshot 8" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
@@ -343,7 +343,7 @@
                     <div class="pix-section">
                         <p class="pix-label">QR Code Pix</p>
                         <div class="qr-code">
-                            <img src="images/qrcode.png" alt="QR Code PIX">
+                            <img src="images/qrcode.png" alt="QR Code PIX" loading="lazy" decoding="async">
                         </div>
                     </div>
                 </div>
@@ -374,6 +374,13 @@
                                 <span class="value">leofnunes</span>
                             </div>
                         </a>
+                        <a href="https://www.instagram.com/sword.abyss" target="_blank" class="contact-item">
+                            <div class="contact-icon"><i data-lucide="instagram"></i></div>
+                            <div class="contact-details">
+                                <span class="label">Instagram</span>
+                                <span class="value">1337gamesoficial</span>
+                            </div>
+                        </a>
                     </div>
 
                     <div class="community-section">
@@ -402,6 +409,10 @@
                 <a href="https://linkedin.com/in/leofnunes/" target="_blank" class="social-link">
                     <i data-lucide="linkedin"></i>
                     <span>LinkedIn</span>
+                </a>
+                <a href="https://www.instagram.com/sword.abyss" target="_blank" class="social-link">
+                    <i data-lucide="instagram"></i>
+                    <span>Instagram</span>
                 </a>
                 <a href="https://chat.whatsapp.com/KLUrdCA2lY1Eh7nFFftYsC" target="_blank" class="social-link">
                     <i data-lucide="message-circle"></i>

@@ -1,11 +1,32 @@
-// Initialize Lucide icons
-lucide.createIcons();
+// Cache DOM elements
+const DOM = {
+    pages: null,
+    navLinks: null,
+    mobileNav: null,
+    menuIcon: null,
+    lightbox: null,
+    lightboxImg: null
+};
+
+// Initialize DOM cache and Lucide icons
+document.addEventListener('DOMContentLoaded', () => {
+    DOM.pages = document.querySelectorAll('.page');
+    DOM.navLinks = document.querySelectorAll('.nav-link');
+    DOM.mobileNav = document.getElementById('mobile-nav');
+    DOM.menuIcon = document.getElementById('menu-icon');
+    DOM.lightbox = document.getElementById('lightbox');
+    DOM.lightboxImg = document.getElementById('lightbox-img');
+    
+    // Initial icon creation for all elements
+    lucide.createIcons();
+});
 
 // Navigation Logic
 function navigateTo(pageId) {
+    if (!DOM.pages) return;
+
     // Hide all pages
-    const pages = document.querySelectorAll('.page');
-    pages.forEach(page => page.classList.remove('active'));
+    DOM.pages.forEach(page => page.classList.remove('active'));
 
     // Show selected page
     const selectedPage = document.getElementById(`page-${pageId}`);
@@ -14,8 +35,7 @@ function navigateTo(pageId) {
     }
 
     // Update nav links
-    const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
+    DOM.navLinks.forEach(link => {
         if (link.getAttribute('data-page-id') === pageId) {
             link.classList.add('active');
         } else {
@@ -24,11 +44,12 @@ function navigateTo(pageId) {
     });
 
     // Close mobile menu if open
-    const mobileNav = document.getElementById('mobile-nav');
-    mobileNav.classList.remove('open');
-    const menuIcon = document.getElementById('menu-icon');
-    menuIcon.setAttribute('data-lucide', 'menu');
-    lucide.createIcons();
+    if (DOM.mobileNav.classList.contains('open')) {
+        DOM.mobileNav.classList.remove('open');
+        const menuIcon = document.getElementById('menu-icon');
+        menuIcon.setAttribute('data-lucide', 'menu');
+        lucide.createIcons();
+    }
 
     // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -36,10 +57,8 @@ function navigateTo(pageId) {
 
 // Mobile Menu Toggle
 function toggleMobileMenu() {
-    const mobileNav = document.getElementById('mobile-nav');
+    const isOpen = DOM.mobileNav.classList.toggle('open');
     const menuIcon = document.getElementById('menu-icon');
-    
-    const isOpen = mobileNav.classList.toggle('open');
     
     if (isOpen) {
         menuIcon.setAttribute('data-lucide', 'x');
@@ -52,17 +71,13 @@ function toggleMobileMenu() {
 
 // Lightbox Logic
 function openLightbox(src) {
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    
-    lightboxImg.src = src;
-    lightbox.classList.add('open');
+    DOM.lightboxImg.src = src;
+    DOM.lightbox.classList.add('open');
     document.body.style.overflow = 'hidden'; // Prevent scroll
 }
 
 function closeLightbox() {
-    const lightbox = document.getElementById('lightbox');
-    lightbox.classList.remove('open');
+    DOM.lightbox.classList.remove('open');
     document.body.style.overflow = 'auto'; // Restore scroll
 }
 
