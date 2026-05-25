@@ -8,21 +8,26 @@ const DOM = {
     lightboxImg: null
 };
 
-// Initialize DOM cache and Lucide icons
-document.addEventListener('DOMContentLoaded', () => {
+function updateDOMCache() {
     DOM.pages = document.querySelectorAll('.page');
-    DOM.navLinks = document.querySelectorAll('.nav-link');
+    DOM.navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
     DOM.mobileNav = document.getElementById('mobile-nav');
     DOM.menuIcon = document.getElementById('menu-icon');
     DOM.lightbox = document.getElementById('lightbox');
     DOM.lightboxImg = document.getElementById('lightbox-img');
-    
-    // Initial icon creation for all elements
-    lucide.createIcons();
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+    updateDOMCache();
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
 });
 
 // Navigation Logic
 function navigateTo(pageId) {
+    if (!DOM.pages || DOM.pages.length === 0) updateDOMCache();
     if (!DOM.pages) return;
 
     // Hide all pages
@@ -34,8 +39,8 @@ function navigateTo(pageId) {
         selectedPage.classList.add('active');
     }
 
-    // Update nav links
-    DOM.navLinks.forEach(link => {
+    // Update active state on nav links
+    document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
         if (link.getAttribute('data-page-id') === pageId) {
             link.classList.add('active');
         } else {
@@ -44,41 +49,43 @@ function navigateTo(pageId) {
     });
 
     // Close mobile menu if open
-    if (DOM.mobileNav.classList.contains('open')) {
-        DOM.mobileNav.classList.remove('open');
-        const menuIcon = document.getElementById('menu-icon');
-        menuIcon.setAttribute('data-lucide', 'menu');
-        lucide.createIcons();
+    if (DOM.mobileNav && DOM.mobileNav.classList.contains('open')) {
+        toggleMobileMenu();
     }
 
-    // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // Mobile Menu Toggle
 function toggleMobileMenu() {
+    if (!DOM.mobileNav) updateDOMCache();
+    if (!DOM.mobileNav) return;
+    
     const isOpen = DOM.mobileNav.classList.toggle('open');
     const menuIcon = document.getElementById('menu-icon');
     
-    if (isOpen) {
-        menuIcon.setAttribute('data-lucide', 'x');
-    } else {
-        menuIcon.setAttribute('data-lucide', 'menu');
+    if (menuIcon && typeof lucide !== 'undefined') {
+        menuIcon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
+        lucide.createIcons();
     }
-    
-    lucide.createIcons();
 }
 
 // Lightbox Logic
 function openLightbox(src) {
-    DOM.lightboxImg.src = src;
-    DOM.lightbox.classList.add('open');
-    document.body.style.overflow = 'hidden'; // Prevent scroll
+    if (!DOM.lightboxImg || !DOM.lightbox) updateDOMCache();
+    if (DOM.lightboxImg && DOM.lightbox) {
+        DOM.lightboxImg.src = src;
+        DOM.lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
 }
 
 function closeLightbox() {
-    DOM.lightbox.classList.remove('open');
-    document.body.style.overflow = 'auto'; // Restore scroll
+    if (!DOM.lightbox) updateDOMCache();
+    if (DOM.lightbox) {
+        DOM.lightbox.classList.remove('open');
+        document.body.style.overflow = 'auto';
+    }
 }
 
 // Close lightbox on Escape key
