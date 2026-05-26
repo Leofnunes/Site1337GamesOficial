@@ -99,17 +99,6 @@ body {
     cursor: crosshair; /* Fallback */
 }
 
-/* CUSTOM RPG CURSOR */
-@media (pointer: fine) {
-    * {
-        cursor: url('images/sword-cursor.svg') 0 0, auto !important;
-    }
-    
-    a, button, .gallery-item, .platform-btn, .donate-btn, .rpg-button, .nav-link, .mobile-nav-link, [onclick] {
-        cursor: url('images/sword-pointer.svg') 0 0, pointer !important;
-    }
-}
-
 body::before {
     content: "";
     position: fixed;
