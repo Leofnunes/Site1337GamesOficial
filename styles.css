@@ -88,6 +88,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    cursor: url('images/Cursor.webp'), auto;
 }
 
 body {
@@ -96,7 +97,6 @@ body {
     line-height: 1.7; /* Better readability */
     overflow-x: hidden;
     background-color: var(--rpg-dark);
-    cursor: crosshair; /* Fallback */
 }
 
 body::before {
@@ -109,9 +109,10 @@ body::before {
     pointer-events: none;
 }
 
-h1, h2, h3, h4, .font-display {
+h1, h2, h3, h4, .font-display, button, a {
     font-family: 'MedievalSharp', cursive;
     font-weight: 400;
+    cursor: url('images/Cursor.webp'), auto !important;
 }
 
 .font-serif {
