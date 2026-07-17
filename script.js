@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
     }
+    initScrollObserver();
 });
 
 // Navigation Logic
@@ -30,16 +31,39 @@ function navigateTo(pageId) {
     if (!DOM.pages || DOM.pages.length === 0) updateDOMCache();
     if (!DOM.pages) return;
 
-    // Hide all pages
+    const activePage = Array.from(DOM.pages).find(page => page.classList.contains('active'));
+    
+    if (activePage && activePage.id !== `page-${pageId}`) {
+        // Desvanecimento suave da página ativa atual
+        activePage.style.opacity = '0';
+        activePage.style.transform = 'translateY(-12px)';
+        activePage.style.transition = 'opacity 0.22s ease-in, transform 0.22s ease-in';
+        
+        setTimeout(() => {
+            // Reseta estilos inline para o próximo carregamento
+            activePage.style.opacity = '';
+            activePage.style.transform = '';
+            activePage.style.transition = '';
+            
+            // Alterna para a nova aba
+            switchTabs(pageId);
+        }, 220);
+    } else {
+        switchTabs(pageId);
+    }
+}
+
+function switchTabs(pageId) {
+    // Esconde todas as páginas
     DOM.pages.forEach(page => page.classList.remove('active'));
 
-    // Show selected page
+    // Mostra a página selecionada
     const selectedPage = document.getElementById(`page-${pageId}`);
     if (selectedPage) {
         selectedPage.classList.add('active');
     }
 
-    // Update active state on nav links
+    // Atualiza o estado ativo nos links de navegação
     document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
         if (link.getAttribute('data-page-id') === pageId) {
             link.classList.add('active');
@@ -48,7 +72,7 @@ function navigateTo(pageId) {
         }
     });
 
-    // Close mobile menu if open
+    // Fecha o menu mobile se estiver aberto
     if (DOM.mobileNav && DOM.mobileNav.classList.contains('open')) {
         toggleMobileMenu();
     }
@@ -94,3 +118,24 @@ document.addEventListener('keydown', (e) => {
         closeLightbox();
     }
 });
+
+// Scroll Fade-in Intersection Observer
+function initScrollObserver() {
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px -10px -10px 0px', // Aciona um pouco antes de entrar totalmente na tela
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                observer.unobserve(entry.target); // Para de observar após animar
+            }
+        });
+    }, observerOptions);
+
+    const animatedElements = document.querySelectorAll('.scroll-fade');
+    animatedElements.forEach(el => observer.observe(el));
+}
