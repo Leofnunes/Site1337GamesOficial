@@ -1,0 +1,40 @@
+# ========================================================
+# 1337Games & Espada do Abismo - Otimizacao e Seguranca
+# ========================================================
+
+# 1. Forcar conexao segura HTTPS
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# 2. Otimizacao de Cache de Navegador (Assets)
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 1 month"
+    
+    # Imagens WebP e Favicons
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    
+    # Fontes Web
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/ttf "access plus 1 year"
+    
+    # CSS e JavaScript
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+
+# 3. Compressao GZIP para carregamento ultrarrapido
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/json font/woff2
+</IfModule>
+
+# 4. Proteger arquivos ocultos e de configuracao
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>

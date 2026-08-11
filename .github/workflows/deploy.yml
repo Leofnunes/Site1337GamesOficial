@@ -1,0 +1,28 @@
+name: Deploy Automatico para Cloudx
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  web-deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Obter codigo do repositorio
+      uses: actions/checkout@v4
+
+    - name: 📂 Sincronizar arquivos via FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        server-dir: ./public_html/
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/.env*
+          README.md
